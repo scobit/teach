@@ -1,0 +1,799 @@
+CSS
+
+
+Intro to CSS
+The basic structure of every web page, HTML, is very plain on its own. The beautiful websites that you see across the internet are styled with a variety of tools, including CSS.
+
+CSS, or Cascading Style Sheets, is a language that web developers use to style the HTML content on a web page. If you’re interested in modifying colors, font types, font sizes, shadows, images, element positioning, and more, CSS is the tool for the job!
+
+In this lesson, you’ll learn how to select which HTML elements you wish to style and set up your CSS file structure.
+
+<link href="style.css" type="text/css" rel="stylesheet">
+
+https://discuss.codecademy.com/t/what-does-the-cascading-in-css-mean/340936
+
+Inline Styles
+Although CSS is a different language than HTML, it’s possible to write CSS code directly within HTML code using inline styles.
+
+To style an HTML element, you can add the style attribute directly to the opening tag. After you add the attribute, you can set it equal to the CSS style(s) you’d like applied to that element.
+
+<p style="color: red;">I'm learning to code!</p>
+The code in the example above demonstrates how to use inline styling. The paragraph element has a style attribute within its opening tag. Next, the style attribute is set equal to color: red;, which will set the color of the paragraph text to red within the browser.
+
+You might be wondering about the syntax of the following snippet of code: color: red;. At the moment, the details of the syntax are not important; you’ll learn more about CSS syntax in other exercises. For now, it’s important to know that inline styles are a quick way of directly styling an HTML element.
+
+If you’d like to add more than one style with inline styles, simply keep adding to the style attribute. Make sure to end the styles with a semicolon (;).
+
+<p style="color: red; font-size: 20px;">I'm learning to code!</p>
+
+https://discuss.codecademy.com/t/this-exercise-talks-about-the-style-attribute-what-is-an-attribute/340937
+https://www.youtube.com/watch?v=r5kfkpYtOiw
+
+
+
+The <style> Tag
+Inline styles are a fast way of styling HTML, but they also have limitations. If you wanted to style, for example, multiple <h1> elements, you would have to add inline styling to each element manually. In addition, you would also have to maintain the HTML code when additional <h1> elements are added.
+
+Fortunately, HTML allows you to write CSS code in its own dedicated section with the <style> element. CSS can be written between opening and closing <style> tags. To use the <style> element, it must be placed inside of the <head> element.
+
+<head>
+  <style>
+
+
+  </style>
+</head>
+After adding a <style> tag in the head section, you can begin writing CSS code.
+
+<head>
+  <style>
+    p {
+      color: red;
+      font-size: 20px;
+    }
+  </style>
+</head>
+The CSS code in the example above changes the color of all paragraph text to red and also changes the size of the text to 20 pixels. Note how the syntax of the CSS code matches (for the most part) the syntax you used for inline styling. The main difference is that you can specify which elements to apply the styling to.
+
+Again, the details of the CSS syntax in the example above aren’t important at the moment. You will learn more about the details of CSS syntax in later lessons.
+
+
+https://discuss.codecademy.com/t/it-seems-strange-to-be-mashing-two-languages-together-in-a-single-document-is-this-common-practice/340938
+
+The .css file
+Developers avoid mixing code by storing HTML and CSS code in separate files (HTML files contain only HTML code, and CSS files contain only CSS code).
+
+You can create a CSS file by using the .css file name extension, like so: style.css
+
+With a CSS file, you can write all the CSS code needed to style a page without sacrificing the readability and maintainability of your HTML file.
+
+https://discuss.codecademy.com/t/what-is-the-preferred-way-of-including-css-within-a-project-how-do-i-know-when-to-use-inline-styles-the-style-tags-or-a-css-file/340939
+https://discuss.codecademy.com/t/how-do-i-link-my-html-and-css/423288
+
+
+
+Linking the CSS File
+Perfect! We successfully separated structure (HTML) from styling (CSS), but the web page still looks bland. Why?
+
+When HTML and CSS code are in separate files, the files must be linked. Otherwise, the HTML file won’t be able to locate the CSS code, and the styling will not be applied.
+
+You can use the <link> element to link HTML and CSS files together. The <link> element must be placed within the head of the HTML file. It is a self-closing tag and requires the following three attributes:
+
+href — like the anchor element, the value of this attribute must be the address, or path, to the CSS file.
+type — this attribute describes the type of document that you are linking to (in this case, a CSS file). The value of this attribute should be set to text/css.
+rel — this attribute describes the relationship between the HTML file and the CSS file. Because you are linking to a stylesheet, the value should be set to stylesheet.
+When linking an HTML file and a CSS file together, the <link> element will look like the following:
+
+<link href="https://www.codecademy.com/stylesheets/style.css" type="text/css" rel="stylesheet">
+Note that in the example above the path to the stylesheet is a URL:
+
+https://www.codecademy.com/stylesheets/style.css
+Specifying the path to the stylesheet using a URL is one way of linking a stylesheet.
+
+If the CSS file is stored in the same directory as your HTML file, then you can specify a relative path instead of a URL, like so:
+
+<link href="./style.css" type="text/css" rel="stylesheet">
+Using a relative path is very common way of linking a stylesheet.
+
+
+
+
+https://discuss.codecademy.com/t/how-do-i-link-my-css-stylesheet-to-html-file/307799/1
+https://discuss.codecademy.com/t/can-the-link-tag-be-used-to-link-files-aside-from-css-to-our-html-document/340940
+https://discuss.codecademy.com/t/can-the-link-tag-be-used-to-include-javascript-in-our-projects/340942
+
+
+Tag Name
+CSS can select HTML elements by using an element’s tag name. A tag name is the word (or character) between HTML angle brackets.
+
+For example, in HTML, the tag for a paragraph element is <p>. The CSS syntax for selecting <p> elements is:
+
+p {
+
+}
+In the example above, all paragraph elements will be selected using a CSS selector. The selector in the example above is p. Note that the CSS selector matches the HTML tag for that element, but without the angle brackets.
+
+In addition, two curly braces follow immediately after the selector (an opening and closing brace, respectively). Any CSS properties will go inside of the curly braces to style the selected elements.
+
+
+
+
+
+https://discuss.codecademy.com/t/in-css-can-we-select-any-html-element-by-using-its-tag-name-as-demonstrated-in-this-exercise/340943
+
+
+Class Name
+CSS is not limited to selecting elements by tag name. HTML elements can have more than just a tag name; they can also have attributes. One common attribute is the class attribute. It’s also possible to select an element by its class attribute.
+
+For example, consider the following HTML:
+
+<p class="brand">Sole Shoe Company</p>
+The paragraph element in the example above has a class attribute within the <p> tag. The class attribute is set to "brand". To select this element using CSS, we could use the following CSS selector:
+
+.brand {
+
+}
+To select an HTML element by its class using CSS, a period (.) must be prepended to the class’s name. In the example above case, the class is brand, so the CSS selector for it is .brand.
+
+
+
+
+
+https://discuss.codecademy.com/t/in-the-example-given-in-this-exercise-why-would-we-want-to-use-the-brand-selector-rather-than-the-p-selector-to-target-our-paragraph/340946
+
+
+
+
+Multiple Classes
+We can use CSS to select an HTML element’s class attribute by name.
+
+So far, we’ve selected elements using only one class name per element. If every HTML element had a single class, all the style information for each element would require a new class.
+
+Luckily, it’s possible to add more than one class name to an HTML element’s class attribute.
+
+For instance, perhaps there’s a heading element that needs to be green and bold. You could write two CSS rules like so:
+
+.green {
+  color: green;
+}
+
+.bold {
+  font-weight: bold;
+}
+Then, you could include both of these classes on one HTML element like this:
+
+<h1 class="green bold"> ... </h1>
+We can add multiple classes to an HTML element’s class attribute by separating them with a space. This enables us to mix and match CSS classes to create many unique styles without writing a custom class for every style combination needed.
+
+
+
+
+https://discuss.codecademy.com/t/in-the-example-shown-in-this-exercise-wouldn-t-it-be-easier-to-just-apply-the-color-and-font-weight-properties-to-the-h2-selector-rather-than-applying-two-separate-classes-to-the-opening-h1-tag/340947
+
+
+ID Name
+If an HTML element needs to be styled uniquely (no matter what classes are applied to the element), we can add an ID to the element. To add an ID to an element, the element needs an id attribute:
+
+<h1 id="large-title"> ... </h1>
+Then, CSS can select HTML elements by their id attribute. To select an id element, CSS prepends the id name with a hashtag (#). For instance, if we wanted to select the HTML element in the example above, it would look like this:
+
+#large-title {
+
+}
+The id name is large-title, therefore the CSS selector for it is #large-title.
+
+
+font-family: cursive;
+text-transform: capitalize;
+
+https://discuss.codecademy.com/t/what-happens-if-we-try-to-apply-the-same-id-to-multiple-elements-will-our-styles-not-get-applied-to-the-targeted-ided-elements/340948
+
+
+Classes and IDs
+CSS can select HTML elements by their tag, class, and ID. CSS classes and IDs have different purposes, which can affect which one you use to style HTML elements.
+
+CSS classes are meant to be reused over many elements. By writing CSS classes, you can style elements in a variety of ways by mixing classes on HTML elements.
+
+For instance, imagine a page with two headlines. One headline needs to be bold and blue, and the other needs to be bold and green. Instead of writing separate CSS rules for each headline that repeat each other’s code, it’s better to write a .bold CSS rule, a .green CSS rule, and a .blue CSS rule. Then you can give one headline the bold green classes, and the other the bold blue classes.
+
+While classes are meant to be used many times, an ID is meant to style only one element. As we’ll learn in the next exercise, IDs override the styles of tags and classes. Since IDs override class and tag styles, they should be used sparingly and only on elements that need to always appear the same.
+
+
+
+https://discuss.codecademy.com/t/can-classes-be-used-as-a-page-anchors-in-a-similar-way-to-ids/340950
+
+
+Specificity
+Specificity is the order by which the browser decides which CSS styles will be displayed. A best practice in CSS is to style elements while using the lowest degree of specificity, so that if an element needs a new style, it is easy to override.
+
+IDs are the most specific selector in CSS, followed by classes, and finally, tags. For example, consider the following HTML and CSS:
+
+<h1 class="headline">Breaking News</h1>
+h1 {
+  color: red;
+}
+
+.headline {
+  color: firebrick;
+}
+In the example code above, the color of the heading would be set to firebrick, as the class selector is more specific than the tag selector. If an ID attribute (and selector) were added to the code above, the styles within the ID selector’s body would override all other styles for the heading. The only way to override an ID is to add another ID with additional styling.
+
+Over time, as files grow with code, many elements may have IDs, which can make CSS difficult to edit, since a new, more specific style must be created to change the style of an element.
+
+To make styles easy to edit, it’s best to style with a tag selector, if possible. If not, add a class selector. If that is not specific enough, then consider using an ID selector.
+
+
+
+https://discuss.codecademy.com/t/is-it-possible-for-two-selectors-targeting-the-same-element-to-have-the-same-specificity-if-so-which-styles-win-out/340952
+
+
+Chaining Selectors
+When writing CSS rules, it’s possible to require an HTML element to have two or more CSS selectors at the same time.
+
+This is done by combining multiple selectors, which we will refer to as chaining. For instance, if there was a .special class for h1 elements, the CSS would look like:
+
+h1.special {
+
+}
+The code above would select only the h1 elements that have a class of special. If a p element also had a class of special, the rule in the example would not style the paragraph.
+
+https://discuss.codecademy.com/t/oes-a-chained-selector-have-a-higher-specificity-than-a-class-or-id-selector-for-example-which-selector-would-win-special-or-h1-special-or-special/340954
+
+Nested Elements
+In addition to chaining selectors to select elements, CSS also supports selecting elements that are nested within other HTML elements. For instance, consider the following HTML:
+
+<ul class='main-list'>
+  <li> ... </li>
+  <li> ... </li>
+  <li> ... </li>
+</ul>
+The nested <li> elements are selected with the following CSS:
+
+.main-list li {
+
+}
+In the example above, .main-list selects the .main-list element (the unordered list element). The nested <li> are selected by adding li to the selector, separated by a space, resulting in .main-list li as the final selector (note the space in the selector).
+
+Selecting elements in this way can make our selectors even more specific by making sure they appear in the context we expect.
+
+https://discuss.codecademy.com/t/this-exercise-uses-selectors-that-target-elements-which-are-direct-children-of-parent-elements-can-we-similarly-target-more-deeply-nested-elements/340956
+
+
+Chaining and Specificity
+In the last exercise, instead of selecting all h5 elements, you selected only the h5 elements nested inside the .description elements. This CSS selector was more specific than writing only h5. Adding more than one tag, class, or ID to a CSS selector increases the specificity of the CSS selector.
+
+For instance, consider the following CSS:
+
+p {
+  color: blue;
+}
+
+
+.main p {
+  color: red;
+}
+Both of these CSS rules define what a p element should look like. Since .main p has a class and a p tag as its selector, only the p elements inside the .main element will appear red. This occurs despite there being another more general rule that states p elements should be blue.
+
+
+
+https://discuss.codecademy.com/t/according-to-this-exercise-main-p-is-more-specific-than-the-p-selector-is-main-p-also-more-specific-than-the-p-main-or-main-selectors/340961
+
+
+Important
+There is one thing that is even more specific than IDs: !important. !important can be applied to specific attributes instead of full rules. It will override any style no matter how specific it is. As a result, it should almost never be used. Once !important is used, it is very hard to override.
+
+The syntax of !important in CSS looks like this:
+
+p {
+  color: blue !important;
+}
+
+
+.main p {
+  color: red;
+}
+Since !important is used on the p selector’s color attribute, all p elements will appear blue, even though there is a more specific .main p selector that sets the color attribute to red.
+
+The !important flag is only useful when an element appears the same way 100% of the time. Since it’s almost impossible to guarantee that this will be true throughout a project and over time, it’s best to avoid !important altogether. If you ever see !important used (or are ever tempted to use it yourself) we strongly recommend reorganizing your CSS. Making your CSS more flexible will typically fix the immediate problem and make your code more maintainable in the long run.
+
+
+
+https://discuss.codecademy.com/t/this-exercise-talks-about-making-our-css-more-flexible-what-does-this-mean-and-how-can-we-accomplish-this/340964
+
+Multiple Selectors
+In order to make CSS more concise, it’s possible to add CSS styles to multiple CSS selectors all at once. This prevents writing repetitive code.
+
+For instance, the following code has repetitive style attributes:
+
+h1 {
+  font-family: Georgia;
+}
+
+.menu {
+  font-family: Georgia;
+}
+Instead of writing font-family: Georgia twice for two selectors, we can separate the selectors by a comma to apply the same style to both, like this:
+
+h1, 
+.menu {
+  font-family: Georgia;
+}
+By separating the CSS selectors with a comma, both the h1 and the .menu elements will receive the font-family: Georgia styling.
+
+https://discuss.codecademy.com/t/this-exercise-illustrates-how-we-can-use-multiple-selectors-to-create-more-concise-code-are-there-additional-tactics-for-creating-less-repetitive-stylesheets/340966
+
+
+
+Review CSS Selectors
+Throughout this lesson, you learned how to select HTML elements with CSS and apply styles to them. Let’s review what you learned:
+
+CSS can change the look of HTML elements. In order to do this, CSS must select HTML elements, then apply styles to them.
+CSS can select HTML elements by tag, class, or ID.
+Multiple CSS classes can be applied to one HTML element.
+Classes can be reusable, while IDs can only be used once.
+IDs are more specific than classes, and classes are more specific than tags. That means IDs will override any styles from a class, and classes will override any styles from a tag selector.
+Multiple selectors can be chained together to select an element. This raises the specificity, but can be necessary.
+Nested elements can be selected by separating selectors with a space.
+The !important flag will override any style, however it should almost never be used, as it is extremely difficult to override.
+Multiple unrelated selectors can receive the same styles by separating the selector names with commas.
+Great work this lesson. With this knowledge, you’ll be able to use CSS to change the look and feel of websites to make them look great.
+
+
+
+CSS Structure
+To style an HTML element using CSS, you need to write a CSS declaration inside the body of a CSS selector.
+
+h1 {
+  color: blue;
+}
+The example above selects the <h1> element. Inside of the selector’s body, we typed color: blue. This line is referred to as a CSS declaration. CSS declarations consist of a property and a value.
+
+Property — the property you’d like to style of that element (i.e., size, color, etc.).
+
+Value — the value of the property (i.e., 18px for size, blue for color, etc.).
+
+In the example above, the property is color and the value is blue. The property and value are separated by a colon (:). A semicolon (;) should always be used at the end of a declaration.
+
+Finally, the entire snippet of code in the example above is known as a CSS rule or rule set. A CSS rule consists of the selector (here, h1) and all declarations inside of the selector.
+
+
+https://discuss.codecademy.com/t/what-is-a-css-selector/340980
+
+
+body {
+  /* Old browsers */
+  background: #141E30;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(-45deg, #35577D, #141E30);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(-45deg, #35577D, #141E30);
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #FFF;
+  font-size: 2em;
+  padding-top: 100px;
+  width: 100%;
+}
+
+h2 {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 24px;
+  padding-bottom: 30px;
+  text-align: left;
+  width: 70%;
+}
+
+p {
+  color: AliceBlue;
+  line-height: 1.3em;
+  text-align: left;
+  width: 100%;
+}
+
+.byline {
+  font-family: Helvetica;
+  color: rgba(255, 255, 255, 0.5);
+  float: left;
+  font-size: 14px;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+.caption {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 14px;
+  margin-left: 20px;
+  padding: 10px;
+  position: relative;
+  top: 80%;
+  width: 60%;
+}
+
+.content {
+  padding: 40px;
+}
+
+.image {
+  background-image: url("https://s3.amazonaws.com/codecademy-content/courses/web-101/unit-4/htmlcss1-img_soccer.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+}
+
+.writer-img {
+  -webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  -moz-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
+  float: left;
+  width: 50px;
+}
+
+
+Font Family
+If you’ve ever used a formatted word processor, chances are that you probably also used a feature that allowed you change the font you were typing in. Font refers to the technical term typeface, or font family.
+
+To change the typeface of text on your web page, you can use the font-family property.
+
+h1 {
+  font-family: Garamond;
+}
+In the example above, the font family for all main heading elements has been set to Garamond.
+
+When setting typefaces on a web page, keep the following points in mind:
+
+The font specified in a stylesheet must be installed on a user’s computer in order for that font to display when a user visits the web page.
+The default typeface for all HTML elements is Times New Roman. You may be familiar with this typeface if you have ever used a formatted word processor. If no font-family attribute is defined, the page will appear in Times New Roman.
+It’s a good practice to limit the number of typefaces used on a web page to 2 or 3. This helps the page load faster in some cases and is usually a good design decision.
+When the name of a typeface consists of more than one word, it’s a best practice to enclose the typeface’s name in quotes, like so:
+h1 {
+  font-family: "Courier New";
+}
+You can find a reference of web safe fonts here.
+
+
+https://www.cssfontstack.com/
+https://en.wikipedia.org/wiki/Typeface
+
+
+
+
+https://discuss.codecademy.com/t/with-the-advent-of-web-fonts-can-t-a-user-see-a-site-s-font-even-if-those-fonts-aren-t-installed-on-her-computer/340981
+
+Font Size
+Changing the typeface isn’t the only way to customize text. Often times, different sections of a web page are highlighted by modifying the font size.
+
+To change the size of text on your web page, you can use the font-size property.
+
+p {
+  font-size: 18px;
+}
+In the example above, the font-size of all paragraphs was set to 18px. px means pixels and is a way to measure font size.
+
+
+
+https://discuss.codecademy.com/t/what-is-a-pixel-and-is-this-the-only-measure-of-font-size/340983
+
+
+
+
+Font Weight
+In CSS, the font-weight property controls how bold or thin text appears.
+
+p {
+  font-weight: bold;
+}
+In the example above, all paragraphs on the web page would appear bolded.
+
+The font-weight property has a another value: normal. Why does it exist?
+
+If we wanted all text on a web page to appear bolded, we could select all text elements and change their font weight to bold. If a certain section of text was required to appear normal, however, we could set the font weight of that particular element to normal, essentially shutting off bold for that element.
+
+
+
+https://discuss.codecademy.com/t/can-all-fonts-be-bolded-with-the-font-weight-property/340987
+
+
+Text Align
+No matter how much styling is applied to text (typeface, size, weight, etc.), text always appears on the left side of the browser.
+
+To align text we can use the text-align property. The text-align property will align text to the element that holds it, otherwise known as its parent.
+
+h1 {
+  text-align: right;
+}
+The text-align property can be set to one of the following three values:
+
+left — aligns text to the left hand side of its parent element, which in this case is the browser.
+center — centers text inside of its parent element.
+right — aligns text to the right hand side of its parent element.
+
+
+https://discuss.codecademy.com/t/can-the-text-align-property-only-be-used-to-align-text-or-can-we-use-it-to-align-other-content-as-well/340988
+
+
+
+Color
+Before discussing the specifics of color, it’s important to make two distinctions about color. Color can affect the following design aspects:
+
+Foreground color
+Background color
+Foreground color is the color that an element appears in. For example, when a heading is styled to appear green, the foreground color of the heading has been styled.
+
+Conversely, when a heading is styled so that its background appears yellow, the background color of the heading has been styled.
+
+In CSS, these two design aspects can be styled with the following two properties:
+
+color: this property styles an element’s foreground color
+background-color: this property styles an element’s background color
+h1 {
+  color: red;
+  background-color: blue;
+}
+In the example above, the text of the heading will appear in red, and the background of the heading will appear blue.
+
+https://discuss.codecademy.com/t/how-do-we-know-which-background-and-foreground-colors-work-well-together/340991
+
+
+
+Opacity
+Opacity is the measure of how transparent an element is. It’s measured from 0 to 1, with 1 representing 100%, or fully visible and opaque, and 0 representing 0%, or fully invisible.
+
+Opacity can be used to make elements fade into others for a nice overlay effect. To adjust the opacity of an element, the syntax looks like this:
+
+.overlay {
+  opacity: 0.5;
+}
+In the example above, the .overlay element would be 50% visible, letting whatever is positioned behind it show through.
+
+
+
+https://discuss.codecademy.com/t/what-is-an-overlay-effect/340993
+
+
+
+Background Image
+CSS has the ability to change the background of an element. One option is to make the background of an element an image. This is done through the CSS property background-image. Its syntax looks like this:
+
+.main-banner {
+  background-image: url("https://www.example.com/image.jpg");
+}
+The background-image property will set the element’s background to display an image.
+The value provided to background-image is a url. The url should be a url to an image. The url can be a file within your project, or it can be a link to an external site. To link to an image inside an existing project, you must provide a relative file path. If there was an image folder in the project, with an image named mountains.jpg, the relative file path would look like:
+.main-banner {
+  background-image: url("images/mountains.jpg");
+}
+
+
+
+
+
+https://discuss.codecademy.com/t/what-is-a-relative-path/340994
+
+
+Review Visual Rules
+Incredible work! You used CSS to alter text and images throughout a website. Throughout this lesson, you learned concepts including:
+
+CSS declarations are structured into property and value pairs.
+The font-family property defines the typeface of an element.
+font-size controls the size of text displayed.
+font-weight defines how thin or thick text is displayed.
+The text-align property places text in the left, right, or center of its parent container.
+Text can have two different color attributes: color and background-color. color defines the color of the text, while background-color defines the color behind the text.
+CSS can make an element transparent with the opacity property.
+CSS can also set the background of an element to an image with the background-image property.
+
+
+https://youtu.be/InA5Ff7mxrc
+
+https://discuss.codecademy.com/t/what-is-linear-gradient-and-why-do-we-need-three-different-background-declarations/340996
+
+The Box Model
+The box model comprises the set of properties which define parts of an element that take up space on a web page. The model includes the content area’s size (width and height) and the element’s padding, border, and margin. The properties include:
+
+Width and height — specifies the width and height of the content area.
+Padding — specifies the amount of space between the content area and the border.
+Border — specifies the thickness and style of the border surrounding the content area and padding.
+Margin — specifies the amount of space between the border and the outside edge of the element.
+The image to the right is a visual representation of the box model.
+
+Open the box model image in a new tab so you can reference the box model as you move through the lesson.
+
+
+Height and Width
+An element’s content has two dimensions: a height and a width. By default, the dimensions of an HTML box are set to hold the raw contents of the box.
+
+The CSS height and width properties can be used to modify these default dimensions.
+
+p {
+  height: 80px;
+  width: 240px;
+}
+In this example, the height and width of paragraph elements are set to 80 pixels and 240 pixels, respectively — the px in the code above stands for pixels.
+
+Pixels allow you to set the exact size of an element’s box (width and height). When the width and height of an element are set in pixels, it will be the same size on all devices — an element that fills a laptop screen will overflow a mobile screen.
+
+
+
+https://discuss.codecademy.com/t/why-some-elements-dont-have-height-and-width/364946
+
+
+Borders
+A border is a line that surrounds an element, like a frame around a painting. Borders can be set with a specific width, style, and color.
+
+width — The thickness of the border. A border’s thickness can be set in pixels or with one of the following keywords: thin, medium, or thick.
+style — The design of the border. Web browsers can render any of 10 different styles. Some of these styles include: none, dotted, and solid.
+color — The color of the border. Web browsers can render colors using a few different formats, including 140 built-in color keywords.
+p {
+  border: 3px solid coral;
+}
+In the example above, the border has a width of 3 pixels, a style of solid and a color of coral. All three properties are set in one line of code.
+
+The default border is medium none color, where color is the current color of the element. If width, style, or color are not set in the CSS file, the web browser assigns the default value for that property.
+
+p.content-header {
+  height: 80px;
+  width: 240px;
+  border: solid coral;
+}
+In this example, the border style is set to solid and the color is set to coral. The width is not set, so it defaults to medium.
+
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/border-style#Values
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+
+
+
+Border Radius
+Ever since we revealed the borders of boxes, you may have noticed that the borders highlight the true shape of an element’s box: square. Thanks to CSS, a border doesn’t have to be square.
+
+You can modify the corners of an element’s border box with the border-radius property.
+
+div.container {
+  border: 3px solid rgb(22, 77, 100);
+  border-radius: 5px;
+}
+The code in the example above will set all four corners of the border to a radius of 5 pixels (i.e. the same curvature that a circle with radius 5 pixels would have).
+
+You can create a border that is a perfect circle by setting the radius equal to the height of the box, or to 100%.
+
+div.container {
+  height: 60px;
+  width: 60px;
+  border: 3px solid rgb(22, 77, 100);
+  border-radius: 100%;
+}
+The code in the example above creates a <div> that is a perfect circle.
+
+
+
+https://discuss.codecademy.com/t/oval-as-a-result-of-border-radius-100/365307
+
+
+Padding I
+The space between the contents of a box and the borders of a box is known as padding. Padding is like the space between a picture and the frame surrounding it. In CSS, you can modify this space with the padding property.
+
+p.content-header {
+  border: 3px solid coral;
+  padding: 10px;
+}
+The code in this example puts 10 pixels of space between the content of the paragraph (the text) and the borders, on all four sides.
+
+The padding property is often used to expand the background color and make content look less cramped.
+
+If you want to be more specific about the amount of padding on each side of a box’s content, you can use the following properties:
+
+padding-top
+padding-right
+padding-bottom
+padding-left
+Each property affects the padding on only one side of the box’s content, giving you more flexibility in customization.
+
+p.content-header {
+  border: 3px solid fuschia;
+  padding-bottom: 10px;
+}
+In the example above, only the bottom side of the paragraph’s content will have a padding of 10 pixels.
+
+
+
+https://discuss.codecademy.com/t/are-padding-and-margin-interchangeable/365314
+
+
+
+
+
+Padding II
+Another implementation of the padding property lets you specify exactly how much padding there should be on each side of the content in a single declaration.
+
+p.content-header {
+  border: 3px solid grey;
+  padding: 6px 11px 4px 9px;
+}
+In the example above, the four values 6px 11px 4px 9px correspond to the amount of padding in a clockwise rotation. In order, it specifies the amount of padding on the top (6 pixels), right (11 pixels), bottom (4 pixels), and left (9 pixels) sides of the content.
+
+When using this implementation of the padding property, we must specify a padding value for all four sides of the element.
+
+However, if the top and bottom values for padding will equal each other, and the left and right values for padding will also equal each other, you can use the following shortcut:
+
+p.content-header {
+  padding: 5px 10px;
+}
+The first value, 5px, sets the padding value for the top and bottom sides of the content. The second value, 10px, sets the padding value for the left and right sides of the content.
+
+
+
+https://discuss.codecademy.com/t/single-declaration/365316
+
+
+
+
+Margins I
+So far you’ve learned about the following components of the box model: content, borders, and padding. The fourth and final component of the box model is margin.
+
+Margin refers to the space directly outside of the box. The margin property is used to specify the size of this space.
+
+p {
+  border: 1px solid aquamarine;
+  margin: 20px;
+}
+The code in the example above will place 20 pixels of space on the outside of the paragraph’s box on all four sides. This means that other HTML elements on the page cannot come within 20 pixels of the paragraph’s border.
+
+If you want to be even more specific about the amount of margin on each side of a box, you can use the following properties:
+
+margin-top
+margin-right
+margin-bottom
+margin-left
+Each property affects the margin on only one side of the box, providing more flexibility in customization.
+
+p {
+  border: 3px solid DarkSlateGrey;
+  margin-right: 15px;
+}
+In the example above, only the right side of the paragraph’s box will have a margin of 15 pixels. It’s common to see margin values used for a specific side of an element.
+
+https://discuss.codecademy.com/t/margin-in-the-box-model/365319
+
+
+Margins II
+What if you don’t want equal margins on all four sides of the box?
+
+A similar implementation of the margin property is used to specify exactly how much margin there should be on each side of the box in a single declaration.
+
+p {
+  margin: 6px 10px 5px 12px;
+}
+In the example above, the four values 6px 10px 5px 12px refer to the amount of margin around the box in a clockwise rotation. In order, it specifies the amount of margin on the top (6 pixels), right (10 pixels), bottom (5 pixels), and left (12 pixels) sides of the box.
+
+When using this implementation of the margin property, the margin value must be specified for all four sides of the box.
+
+Just like the padding shortcut, when you’re certain that the top and bottom values for margin will equal each other, and that the left and right values for margin will also equal each other, you can use the following shortcut:
+
+p {
+  margin: 6px 12px;
+}
+The first value, 6px, sets a margin value for the top and bottom of the box. The second value, 12px, sets a margin value for the left and right sides of the box.
+
+
+
+999999999999999999999999999999999999999999999999999999999999999
+
+
+
+
+
+
+
+
+
